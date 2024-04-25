@@ -129,7 +129,7 @@ Now check out the example.vcf file. These files can be very large, but example.v
 
 > note: If you are new to using vim, you can remove text wrap by typing ':set nowrap' followed by enter. You can see line numbers by typing ':set number' followed by enter. You can exit vim without saving by typing ':q!' followed by enter.
 
-You may notice that the ```FORMAT''' section contains more info than the example above (```AO''', ```GL''', ```GT''', ```QA''', ```RO'''). There are also other genotype fields that you can include/exclude (see [this page](https://gatk.broadinstitute.org/hc/en-us/articles/360035531692-VCF-Variant-Call-Format) and  page 5 of [this document](http://samtools.github.io/hts-specs/VCFv4.1.pdf) for details of the other fields).
+You may notice that the ```FORMAT``` section contains more info than the example above (```AO```, ```GL```, ```GT```, ```QA```, ```RO```). There are also other genotype fields that you can include/exclude (see [this page](https://gatk.broadinstitute.org/hc/en-us/articles/360035531692-VCF-Variant-Call-Format) and  page 5 of [this document](http://samtools.github.io/hts-specs/VCFv4.1.pdf) for details of the other fields).
 
 Once you have exited the text editor, you can count the number of variants in the VCF from the command line using the following command:
 
@@ -165,7 +165,7 @@ gatk --java-options "-Xmx16g" VariantFiltration \
         --filter-expression "QD < 2.0"
 ```
 
-For sites that pass this filtering criteria, they will be marked with ```PASS''' in the ```FILTER''' section of the VCF. If they don't pass the filtering criteria, they will be marked with ```QD''' in the ```FILTER''' section of the VCF. You can add multiple filtering criteria within this gatk command:
+For sites that pass this filtering criteria, they will be marked with ```PASS``` in the ```FILTER``` section of the VCF. If they don't pass the filtering criteria, they will be marked with ```QD``` in the ```FILTER``` section of the VCF. You can add multiple filtering criteria within this gatk command:
 
 ```
 gatk --java-options "-Xmx16g" VariantFiltration \
@@ -180,7 +180,7 @@ gatk --java-options "-Xmx16g" VariantFiltration \
         --filter-expression "FS > 60.0"
 ```
 
-To remove sites that didn't pass your filtering criteria, you can use an awk command to remove anything that doesn't have ```PASS''' in the ```FILTER''' section of the vcf.
+To remove sites that didn't pass your filtering criteria, you can use an awk command to remove anything that doesn't have ```PASS``` in the ```FILTER``` section of the vcf.
 
 ```
 awk '/^#/||$7=="PASS"' qd_marked.vcf > qd_filtered.vcf
@@ -205,16 +205,16 @@ mv singletons_filtered.recode.vcf filtered.vcf
 # Exercise
 The data for this exercise come from [Farkas et al., 2021](https://doi.org/10.3389/fmicb.2021.665041) and the associated [github repository](https://github.com/cfarkas/SARS-CoV-2-freebayes).
 
-The ```merged.vcf''' file is the output file from the [genomics-pipeline-intro](https://github.com/KLab-UT/genomics-pipeline-intro) repository.
+The ```merged.vcf``` file is the output file from the [genomics-pipeline-intro](https://github.com/KLab-UT/genomics-pipeline-intro) repository.
 
 ## Exercise Objective
-1. Modify the ```genomics-pipeline-intro.sh''' file so that it is compatible with the CHPC. In other words, add lines of code that will enable this script to run as a batch script so that the following command would work on the CHPC:
+1. Modify the ```genomics-pipeline-intro.sh``` file so that it is compatible with the CHPC. In other words, add lines of code that will enable this script to run as a batch script so that the following command would work on the CHPC:
 
     ```
     sbatch bash_scripts/genomics-pipeline-intro.sh -l July_28_2020_NorAm.txt -g covid19-refseq.fasta -a 0.4999 -t 4
     ```
 
-You don't need to run the full script- you already have the output (```merged.vcf''') here in this repository. You only need to modify the script so that it could be run on the CHPC.
+You don't need to run the full script- you already have the output (```merged.vcf```) here in this repository. You only need to modify the script so that it could be run on the CHPC.
 
 2. Perform the filtering steps specified in the walkthrough above (using GATK, vcftools, and bcftools).
 
